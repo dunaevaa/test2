@@ -8,7 +8,7 @@ bool read (double *array, int size) {
     string str;
     getline (cin, str);
     istringstream stream (str);
-    for (unsigned int i=0; i < size; i++) {
+    for (int i=0; i < size; i++) {
         if (!(stream >> array[i])) {
             cout << "An error has occured while reading input data." << endl;
             return false;
@@ -23,7 +23,7 @@ bool read (double *array, int size) {
 void sdvig (double *array, int size, int sdv) {
     double *array_left = new double[size-sdv];
     double *array_right = new double[sdv];
-    for (unsigned int i=0; i<size; i++) {
+    for (int i=0; i<size; i++) {
         if (i < size-sdv) { 
             array_left[i] = array[i];
         }
@@ -31,13 +31,13 @@ void sdvig (double *array, int size, int sdv) {
             array_right[i+sdv-size] = array[i];
         }
     }
-    for (unsigned int i=0; i < (size-sdv)/2; i++) {
+    for (int i=0; i < (size-sdv)/2; i++) {
         swap (array_left[i], array_left[size-sdv-1-i]);
     }
-    for (unsigned int i=0; i < sdv/2; i++) {
+    for (int i=0; i < sdv/2; i++) {
         swap (array_right[i], array_right[sdv-1-i]);
     }
-    for (unsigned int i=0; i < size; i++) {
+    for (int i=0; i < size; i++) {
         if (i < size-sdv) {
             array[i] = array_left[i];
         }
@@ -45,7 +45,7 @@ void sdvig (double *array, int size, int sdv) {
             array[i] = array_right[i+sdv-size];
         }
     }
-    for (unsigned int i=0; i < size/2; i++) {
+    for (int i=0; i < size/2; i++) {
         swap (array[i], array[size-1-i]);
     }
 }
@@ -70,7 +70,7 @@ int main(){
             return -2;
         }
         sdvig (array, size, sdv);
-        for (unsigned int i=0; i < size; i++) {
+        for (int i=0; i < size; i++) {
             cout << array[i] << " ";
         }
     }
